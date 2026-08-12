@@ -1,0 +1,6 @@
+dataset,split,rows,n_supports,pct_supports,n_refutes,pct_refutes,n_not_enough_info,pct_not_enough_info,claim_tokens_mean,claim_tokens_median,evidence_tokens_mean,evidence_tokens_median,dropped_empty_evidence
+FEVER,train,227943,114801,50.4,47096,20.7,66046,29.0,7.7,7,35.7,30,334
+FEVER,val,15873,4638,29.2,4887,30.8,6348,40.0,8.0,7,32.0,28,62
+FEVER,test,16008,4694,29.3,4889,30.5,6425,40.1,8.2,8,32.5,28,31
+Fin-Fact,test,3367,1271,37.7,1485,44.1,611,18.1,11.6,11,312.4,230,0
+SEC-synthetic,test,1489,497,33.4,497,33.4,495,33.2,29.1,27,80.8,77,0

@@ -1,0 +1,12 @@
+model,tier,model_size_mb,train_time_s,inference_samples_per_s,fever_test_macro_f1
+lexical_baseline,baseline,0.0,11.2,75272.0,0.4101
+claim_only_logreg,baseline,4.67,5.3,110364.9,0.556
+naive_bayes,classical,8.08,0.9,20591.5,0.4402
+logreg,classical,4.65,11.5,20308.6,0.5493
+linear_svm,classical,5.8,38.1,19216.6,0.5419
+random_forest,ensemble,2591.47,391.7,7959.0,0.3718
+xgboost,ensemble,8.45,6823.3,13512.0,0.5358
+voting_ensemble,ensemble,14.18,6835.7,13147.8,0.5523
+voting_ensemble_calsvm,ensemble,21.05,6892.3,18040.2,0.5511
+bilstm,deep,160.86,2098.1,2954.1,0.5863
+distilbert,deep,256.11,12807.4,23.4,0.8028
