@@ -1,0 +1,11 @@
+model,category,count
+distilbert,negation,239
+distilbert,numeric,1132
+distilbert,low_overlap_paraphrase,384
+distilbert,nei_confusion,2360
+distilbert,other,1129
+logreg,negation,410
+logreg,numeric,2222
+logreg,low_overlap_paraphrase,709
+logreg,nei_confusion,5192
+logreg,other,1095

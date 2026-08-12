@@ -1,0 +1,11 @@
+model,perturbation_type,n,accuracy
+distilbert,entity_swap,38,0.1053
+distilbert,evidence_mismatch,495,0.4485
+distilbert,negation,229,0.3057
+distilbert,none,497,0.9819
+distilbert,number_change,230,0.2652
+logreg,entity_swap,38,0.0526
+logreg,evidence_mismatch,495,0.9434
+logreg,negation,229,0.1135
+logreg,none,497,0.0241
+logreg,number_change,230,0.0522

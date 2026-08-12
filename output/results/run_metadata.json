@@ -1,0 +1,46 @@
+{
+  "cpu": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+  "cores": 6,
+  "logical_processors": 12,
+  "ram_gb": 15.3,
+  "gpu": "none",
+  "torch_cuda_available": false,
+  "os": "Windows 11 (10.0.26200)",
+  "python_version": "3.12.10",
+  "key_package_versions": {
+    "numpy": "2.5.1",
+    "pandas": "3.0.3",
+    "scikit-learn": "1.9.0",
+    "xgboost": "3.3.0",
+    "matplotlib": "3.11.1",
+    "datasets": "5.0.0",
+    "transformers": "5.14.1",
+    "torch": "2.13.0",
+    "tensorflow": "2.21.0",
+    "gensim": "4.4.0",
+    "nltk": "3.10.0",
+    "beautifulsoup4": "4.15.0",
+    "lxml": "6.1.1",
+    "sec-edgar-downloader": "5.1.0",
+    "tqdm": "4.69.0",
+    "pyarrow": "25.0.0"
+  },
+  "seed": 42,
+  "date": "2026-07-19",
+  "phase_wall_times_s": {
+    "phase_0_setup": 600,
+    "phase_1_data_eda": 660,
+    "phase_2_baseline_classical": 420,
+    "phase_3_ensembles": 8160,
+    "phase_4_deep_models": 16400,
+    "phase_5_analysis_extras": 800
+  },
+  "phase_wall_times_note": "Approximate wall-clock spans derived from log timestamps; phase_0 includes package installation, phase_1 includes correction re-runs requested at Checkpoint 1 review.",
+  "bilstm_train_size": 227943,
+  "distilbert_train_size": 40000,
+  "fever_dropped_empty_evidence": {
+    "train": 334,
+    "val": 62,
+    "test": 31
+  }
+}

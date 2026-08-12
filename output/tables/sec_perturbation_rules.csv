@@ -1,0 +1,6 @@
+rule,description,count
+supports_verbatim,Claim is a filing sentence verbatim; evidence is its own three-sentence context window,497
+number_change,One number scaled by a factor of +/-15-60% or two adjacent digits swapped,230
+entity_swap,Company name replaced with a different ticker's registered company name,38
+negation,"Directional word flipped (increased/decreased, above/below, gain/loss, higher/lower) or 'not' inserted/removed",229
+evidence_mismatch,Unperturbed sentence paired with a context window from a different filing (token overlap < 0.2),495
