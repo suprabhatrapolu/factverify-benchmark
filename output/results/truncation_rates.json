@@ -1,0 +1,7 @@
+{
+  "train": 0.15,
+  "fever_val": 0.14,
+  "fever_test": 0.14,
+  "finfact_test": 62.01,
+  "sec_synthetic": 2.35
+}

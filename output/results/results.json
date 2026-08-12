@@ -1560,5 +1560,156 @@
         ]
       }
     }
+  },
+  "distilbert_full": {
+    "display_name": "DistilBERT (fine-tuned, full FEVER train, Colab GPU)",
+    "tier": "deep",
+    "best_hyperparams": {
+      "lr": 2e-05,
+      "batch_size": 32,
+      "epochs": 2,
+      "max_length": 256,
+      "fp16": true
+    },
+    "train_time_s": 1582.1,
+    "model_size_mb": 256.11,
+    "inference_samples_per_s": 643.8,
+    "train_size_used": 227943,
+    "eval": {
+      "fever_test": {
+        "accuracy": 0.8406,
+        "macro_f1": 0.8405,
+        "weighted_f1": 0.8401,
+        "per_class": {
+          "SUPPORTS": {
+            "precision": 0.8047,
+            "recall": 0.9154,
+            "f1": 0.8565,
+            "support": 4694
+          },
+          "REFUTES": {
+            "precision": 0.8478,
+            "recall": 0.8065,
+            "f1": 0.8266,
+            "support": 4889
+          },
+          "NOT ENOUGH INFO": {
+            "precision": 0.8669,
+            "recall": 0.8118,
+            "f1": 0.8385,
+            "support": 6425
+          }
+        },
+        "confusion_matrix": [
+          [
+            4297,
+            159,
+            238
+          ],
+          [
+            383,
+            3943,
+            563
+          ],
+          [
+            660,
+            549,
+            5216
+          ]
+        ]
+      },
+      "finfact_test": {
+        "accuracy": 0.3799,
+        "macro_f1": 0.3127,
+        "weighted_f1": 0.3301,
+        "per_class": {
+          "SUPPORTS": {
+            "precision": 0.403,
+            "recall": 0.7514,
+            "f1": 0.5246,
+            "support": 1271
+          },
+          "REFUTES": {
+            "precision": 0.5309,
+            "recall": 0.1387,
+            "f1": 0.22,
+            "support": 1485
+          },
+          "NOT ENOUGH INFO": {
+            "precision": 0.1938,
+            "recall": 0.1931,
+            "f1": 0.1934,
+            "support": 611
+          }
+        },
+        "confusion_matrix": [
+          [
+            955,
+            129,
+            187
+          ],
+          [
+            975,
+            206,
+            304
+          ],
+          [
+            440,
+            53,
+            118
+          ]
+        ]
+      },
+      "sec_synthetic": {
+        "accuracy": 0.5628,
+        "macro_f1": 0.5354,
+        "weighted_f1": 0.5353,
+        "per_class": {
+          "SUPPORTS": {
+            "precision": 0.465,
+            "recall": 0.9879,
+            "f1": 0.6323,
+            "support": 497
+          },
+          "REFUTES": {
+            "precision": 0.6512,
+            "recall": 0.2817,
+            "f1": 0.3933,
+            "support": 497
+          },
+          "NOT ENOUGH INFO": {
+            "precision": 0.9495,
+            "recall": 0.4182,
+            "f1": 0.5806,
+            "support": 495
+          }
+        },
+        "confusion_matrix": [
+          [
+            491,
+            3,
+            3
+          ],
+          [
+            349,
+            140,
+            8
+          ],
+          [
+            216,
+            72,
+            207
+          ]
+        ]
+      }
+    },
+    "gpu": "Tesla T4",
+    "truncation_rates_pct": {
+      "train": 0.15,
+      "fever_val": 0.14,
+      "fever_test": 0.14,
+      "finfact_test": 62.01,
+      "sec_synthetic": 2.35
+    }
   }
 }
