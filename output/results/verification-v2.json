@@ -1,0 +1,176 @@
+{
+  "run_utc": "2026-09-11T08:47:15.683896+00:00",
+  "parquet_sha256": "696a69fe01ba9a12e1a7da798e0773f60f833efe579ca519156d66317510a648",
+  "n_pairs": 1489,
+  "models": {
+    "distilbert_full": {
+      "none": {
+        "correct": 491,
+        "n": 497,
+        "acc": 0.9879275653923542,
+        "wilson_lo": 0.9739,
+        "wilson_hi": 0.9945
+      },
+      "number_change": {
+        "correct": 75,
+        "n": 230,
+        "acc": 0.32608695652173914,
+        "wilson_lo": 0.2688,
+        "wilson_hi": 0.3891
+      },
+      "negation": {
+        "correct": 64,
+        "n": 229,
+        "acc": 0.2794759825327511,
+        "wilson_lo": 0.2254,
+        "wilson_hi": 0.3409
+      },
+      "entity_swap": {
+        "correct": 1,
+        "n": 38,
+        "acc": 0.02631578947368421,
+        "wilson_lo": 0.0047,
+        "wilson_hi": 0.135
+      },
+      "evidence_mismatch": {
+        "correct": 207,
+        "n": 495,
+        "acc": 0.41818181818181815,
+        "wilson_lo": 0.3755,
+        "wilson_hi": 0.4621
+      }
+    },
+    "distilbert": {
+      "none": {
+        "correct": 488,
+        "n": 497,
+        "acc": 0.9818913480885312,
+        "wilson_lo": 0.9659,
+        "wilson_hi": 0.9904
+      },
+      "number_change": {
+        "correct": 61,
+        "n": 230,
+        "acc": 0.26521739130434785,
+        "wilson_lo": 0.2124,
+        "wilson_hi": 0.3258
+      },
+      "negation": {
+        "correct": 70,
+        "n": 229,
+        "acc": 0.3056768558951965,
+        "wilson_lo": 0.2496,
+        "wilson_hi": 0.3681
+      },
+      "entity_swap": {
+        "correct": 4,
+        "n": 38,
+        "acc": 0.10526315789473684,
+        "wilson_lo": 0.0417,
+        "wilson_hi": 0.2413
+      },
+      "evidence_mismatch": {
+        "correct": 222,
+        "n": 495,
+        "acc": 0.4484848484848485,
+        "wilson_lo": 0.4052,
+        "wilson_hi": 0.4925
+      }
+    },
+    "xgboost": {
+      "none": {
+        "correct": 206,
+        "n": 497,
+        "acc": 0.41448692152917505,
+        "wilson_lo": 0.372,
+        "wilson_hi": 0.4583
+      },
+      "number_change": {
+        "correct": 25,
+        "n": 230,
+        "acc": 0.10869565217391304,
+        "wilson_lo": 0.0747,
+        "wilson_hi": 0.1555
+      },
+      "negation": {
+        "correct": 99,
+        "n": 229,
+        "acc": 0.43231441048034935,
+        "wilson_lo": 0.3698,
+        "wilson_hi": 0.4971
+      },
+      "entity_swap": {
+        "correct": 3,
+        "n": 38,
+        "acc": 0.07894736842105263,
+        "wilson_lo": 0.0272,
+        "wilson_hi": 0.208
+      },
+      "evidence_mismatch": {
+        "correct": 182,
+        "n": 495,
+        "acc": 0.36767676767676766,
+        "wilson_lo": 0.3264,
+        "wilson_hi": 0.411
+      }
+    },
+    "lexical_baseline": {
+      "none": {
+        "correct": 497,
+        "n": 497,
+        "acc": 1.0,
+        "wilson_lo": 0.9923,
+        "wilson_hi": 1.0
+      },
+      "number_change": {
+        "correct": 1,
+        "n": 230,
+        "acc": 0.004347826086956522,
+        "wilson_lo": 0.0008,
+        "wilson_hi": 0.0242
+      },
+      "negation": {
+        "correct": 0,
+        "n": 229,
+        "acc": 0.0,
+        "wilson_lo": 0.0,
+        "wilson_hi": 0.0165
+      },
+      "entity_swap": {
+        "correct": 1,
+        "n": 38,
+        "acc": 0.02631578947368421,
+        "wilson_lo": 0.0047,
+        "wilson_hi": 0.135
+      },
+      "evidence_mismatch": {
+        "correct": 495,
+        "n": 495,
+        "acc": 1.0,
+        "wilson_lo": 0.9923,
+        "wilson_hi": 1.0
+      }
+    }
+  },
+  "number_change_non_year_distilbert_full": {
+    "correct": 36,
+    "n": 126,
+    "acc": 0.2857142857142857,
+    "wilson_lo": 0.2141,
+    "wilson_hi": 0.37
+  },
+  "ordering_tests_fisher_exact_two_sided": {
+    "entity_swap_vs_negation": 0.000332,
+    "entity_swap_vs_number_change": 2.6e-05,
+    "number_change_all_vs_negation": 0.3099,
+    "number_change_non_year_vs_negation": 0.9025
+  },
+  "label_mapping_check": {
+    "mapping_table_sum": 3369,
+    "dataset_stats_rows": 3367,
+    "dataset_stats_supports": 1271,
+    "mapping_table_true": 1273,
+    "discrepancy_rows": 2,
+    "verdict": "print the scored counts (1271/1485/611); the mapping table is pre-drop"
+  }
+}

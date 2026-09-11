@@ -1,0 +1,17 @@
+model,edit_kind,n,accuracy,ci_low,ci_high
+DistilBERT (full FEVER),year,95,0.3895,0.2842,0.4947
+DistilBERT (full FEVER),non_year,126,0.2857,0.2143,0.3651
+DistilBERT (full FEVER),unlocalised,9,0.2222,0.0,0.5556
+DistilBERT (full FEVER),all_number_change,230,0.3261,0.2651,0.3826
+DistilBERT (40k subset),year,95,0.3158,0.2211,0.4105
+DistilBERT (40k subset),non_year,126,0.2381,0.1667,0.3095
+DistilBERT (40k subset),unlocalised,9,0.1111,0.0,0.3333
+DistilBERT (40k subset),all_number_change,230,0.2652,0.2087,0.3217
+XGBoost,year,95,0.1158,0.0632,0.1789
+XGBoost,non_year,126,0.0952,0.0476,0.1508
+XGBoost,unlocalised,9,0.2222,0.0,0.5556
+XGBoost,all_number_change,230,0.1087,0.0696,0.1522
+Lexical baseline,year,95,0.0,0.0,0.0
+Lexical baseline,non_year,126,0.0079,0.0,0.0238
+Lexical baseline,unlocalised,9,0.0,0.0,0.0
+Lexical baseline,all_number_change,230,0.0043,0.0,0.013

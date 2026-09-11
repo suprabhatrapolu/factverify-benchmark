@@ -1,0 +1,13 @@
+model,subset,n,macro_f1,ci_lo,ci_hi
+distilbert,full,3367,0.337,0.321,0.353
+distilbert,fits_256,1279,0.29,0.267,0.314
+distilbert,exceeds_256,2088,0.353,0.332,0.374
+distilbert_full,full,3367,0.313,0.297,0.327
+distilbert_full,fits_256,1279,0.274,0.25,0.297
+distilbert_full,exceeds_256,2088,0.321,0.301,0.342
+lexical_baseline,full,3367,0.368,0.351,0.384
+lexical_baseline,fits_256,1279,0.283,0.258,0.308
+lexical_baseline,exceeds_256,2088,0.404,0.384,0.425
+xgboost,full,3367,0.364,0.349,0.38
+xgboost,fits_256,1279,0.376,0.351,0.402
+xgboost,exceeds_256,2088,0.333,0.318,0.349

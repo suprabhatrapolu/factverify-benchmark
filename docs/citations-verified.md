@@ -1,0 +1,9 @@
+# A4 citation verification receipts (2026-09-05, arXiv API `export.arxiv.org/api/query`; raw responses hashed in `arxiv_metadata_A4.json`)
+
+| Key | arXiv | Title (verbatim) | Authors (verbatim order) | Venue / comments line | Fact used in the sentence | Verified |
+|---|---|---|---|---|---|---|
+| venktesh2024quantemp | 2403.17169 (v2 2024-05-01) | QuanTemp: A real-world open-domain benchmark for fact-checking numerical claims | Venktesh V; Abhijit Anand; Avishek Anand; Vinay Setty | "Accepted for publication at the 47th International ACM SIGIR Conference … (SIGIR 2024)"; ACM DL doi 10.1145/3626772.3657874 (search result) | numerical claims, temporal/statistical, evidence collection without leakage; best baseline macro-F1 58.32 | yes |
+| sharma2025fiscal | 2511.19671 (2025-11-24) | FISCAL: Financial Synthetic Claim-document Augmented Learning for Efficient Fact-Checking | Rishab Sharma; Iman Saberi; Elham Alipour; Jie JW Wu; Fatemeh Fard | "39th Conference on Neural Information Processing Systems (NeurIPS 2025) Workshop: Generative AI in Finance" | synthetic claim–document data to train MiniCheck-FISCAL, a lightweight verifier for numerical financial claims; evaluated on FinDVer and Fin-Fact | yes |
+| panda2026finverbench | 2605.29586 (2026-05-28) | FinVerBench: Benchmark Validity and Calibration in Large Language Model Financial Statement Verification | Silu Panda | "37 pages, 9 figures" (preprint; no venue) | built from SEC 10-K XBRL filings for 43 S&P 500 companies; four-category error taxonomy (arithmetic, cross-statement linkage, year-over-year, magnitude); rendering choices materially affect measured recall; LLM calibration | yes |
+
+Nothing else was added to the bibliography. The FISCAL abstract was additionally read on the arXiv abstract page (WebFetch, 2026-09-05) and matches the API summary.
