@@ -107,8 +107,8 @@ SEC_NAME_VARIANTS = {
     "CAT": ["Caterpillar Inc.", "Caterpillar"],
     "T": ["AT&T Inc.", "AT&T"],
 }
-SEC_EDGAR_COMPANY = "AnonymousResearch"
-SEC_EDGAR_EMAIL = "anonymous@example.com"
+SEC_EDGAR_COMPANY = "Dirmacs"
+SEC_EDGAR_EMAIL = "suprabhat@dirmacs.com"
 SEC_DOWNLOAD_DIR = RAW_DIR / "sec_edgar"
 SEC_MIN_SENT_TOKENS = 8
 SEC_MAX_SENT_TOKENS = 60
