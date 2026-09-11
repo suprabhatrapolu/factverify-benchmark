@@ -9,7 +9,7 @@ Macro-F1 by subset (recomputed from the released per-example predictions; the `f
 
 | model | n full | full | n fits | fits ≤256 | n exceeds | exceeds >256 |
 |---|---|---|---|---|---|---|
-| lexical_baseline | 3367 | 0.367 | 1279 | 0.283 | 2088 | 0.404 |
+| lexical_baseline | 3367 | 0.368 | 1279 | 0.283 | 2088 | 0.404 |
 | claim_only_logreg | 3367 | 0.258 | 1279 | 0.265 | 2088 | 0.256 |
 | naive_bayes | 3367 | 0.108 | 1279 | 0.105 | 2088 | 0.109 |
 | logreg | 3367 | 0.205 | 1279 | 0.178 | 2088 | 0.224 |
