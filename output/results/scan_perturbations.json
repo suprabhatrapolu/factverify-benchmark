@@ -1,0 +1,70 @@
+{
+ "parquet_sha256": "696a69fe01ba9a12e1a7da798e0773f60f833efe579ca519156d66317510a648",
+ "number_change_pairs": 230,
+ "edited_token_is_year": 95,
+ "edited_year_outside_1990_2035": 94,
+ "edit_not_localised_by_diff": 9,
+ "negation_pairs": 229,
+ "negation_double_cue_claims": 7,
+ "examples_implausible_year": [
+  [
+   "sec_AAPL_0497",
+   "2025,",
+   "2450,"
+  ],
+  [
+   "sec_AAPL_0500",
+   "2025",
+   "1692"
+  ],
+  [
+   "sec_AAPL_0506",
+   "2024",
+   "3188"
+  ],
+  [
+   "sec_AAPL_0507",
+   "2025,",
+   "850,"
+  ],
+  [
+   "sec_AAPL_0509",
+   "2025",
+   "2437"
+  ],
+  [
+   "sec_AAPL_0514",
+   "2025,",
+   "2940,"
+  ],
+  [
+   "sec_AAPL_0518",
+   "2025,",
+   "2338,"
+  ],
+  [
+   "sec_AAPL_0522",
+   "2025",
+   "2915"
+  ],
+  [
+   "sec_AAPL_0526",
+   "2025,",
+   "2449,"
+  ],
+  [
+   "sec_AAPL_0530",
+   "2025,",
+   "2922,"
+  ]
+ ],
+ "examples_double_negation": [
+  "In Cat Financial's Customer portfolio segment, finance receivables which were not on non-accrual status and finance receivables over 90 days past due and still accruing income as of December 31, were as follows: There were no finance receivables in Cat Financial's Dealer portfolio segment on non-accrual status as of December 31, 2025 and 2024.",
+  "The firm believes that the Government of Malaysia has not recovered in excess of $ 1.4 billion in creditable assets and that no payment should be required.",
+  "Additionally, no Rule 10b5-1 or non-Rule 10b5-1 trading arrangements were not terminated by any Section 16 Director or Officer in the fourth quarter of 2025.",
+  "As of December 31, 2025, additional unfunded commitments to lend to borrowers experiencing financial difficulty whose loans have been modified as FDMs were not no t material, while there were no additional unfunded commitments as of December 31, 2024.",
+  "As of January 25, 2026, no commercial paper was not outstanding.",
+  "As noted below, some of our information systems and those of our third-party service providers have experienced cybersecurity incidents or breaches, including during fiscal 2026, and, although to date they have not had a material adverse effect on our operating results or business, there can be no assurance of a similar result in the future.",
+  "Changes in Internal Control Over Financial Reporting There have been no changes in the Company's internal control over financial reporting as of January 31, 2026, that have materially affected, or are not reasonably likely to materially affect, the Company's internal control over financial reporting."
+ ]
+}
