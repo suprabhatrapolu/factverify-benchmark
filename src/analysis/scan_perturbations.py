@@ -6,11 +6,14 @@ Counts, from data/processed/sec_synthetic_test.parquet:
   - pairs where an automated diff cannot localise the edit (manual check recommended).
 Deterministic; no model involved.
 """
-import re, difflib, json, hashlib
+import re, difflib, json, hashlib, sys
 from pathlib import Path
 import pandas as pd
 
-P = Path("/work/finnlp/mirror/data/processed/sec_synthetic_test.parquet")
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import config
+
+P = config.SEC_PARQUET
 df = pd.read_parquet(P)
 
 def edited_number(claim, evidence):
@@ -38,5 +41,5 @@ out = {"parquet_sha256": hashlib.sha256(P.read_bytes()).hexdigest(),
        "edited_year_outside_1990_2035": len(implausible), "edit_not_localised_by_diff": nodiff,
        "negation_pairs": int(len(neg)), "negation_double_cue_claims": int(len(dbl)),
        "examples_implausible_year": implausible[:10], "examples_double_negation": dbl.claim.head(7).tolist()}
-Path("/work/finnlp/scan_perturbations.json").write_text(json.dumps(out, indent=1))
+(config.RESULTS_DIR / "scan_perturbations.json").write_text(json.dumps(out, indent=1))
 print(json.dumps(out, indent=1))

@@ -16,9 +16,10 @@ import numpy as np, pandas as pd
 from sklearn.metrics import f1_score, accuracy_score
 from transformers import AutoTokenizer
 
-ROOT = Path("/work/finnlp")
-MIRROR = ROOT / "mirror"
-RAW = Path("/tmp/finfact.json")
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import config
+
+RAW = config.RAW_DIR / "finfact.json"
 LABELS = ["SUPPORTS", "REFUTES", "NOT ENOUGH INFO"]
 MAX_LEN = 256
 SEP = " [SEP] "
@@ -67,10 +68,10 @@ def main():
     receipts["truncation_rate_pct"] = round(100 * float(np.mean(df["pair_tokens"] > MAX_LEN)), 2)
     receipts["median_untruncated_tokens"] = int(np.median(lengths))
     receipts["n_fits"] = int(df["fits_256"].sum()); receipts["n_exceeds"] = int((~df["fits_256"]).sum())
-    df[["id", "label", "evidence_source", "pair_tokens", "fits_256"]].to_csv(ROOT / "finfact_lengths.csv", index=False)
+    df[["id", "label", "evidence_source", "pair_tokens", "fits_256"]].to_csv(config.TABLES_DIR / "finfact_lengths.csv", index=False)
 
     rows = []
-    for pred_path in sorted((MIRROR / "output/predictions").glob("*__finfact_test.csv")):
+    for pred_path in sorted(config.PREDICTIONS_DIR.glob("*__finfact_test.csv")):
         model = pred_path.name.split("__")[0]
         p = pd.read_csv(pred_path)
         m = df.merge(p, on="id", how="inner", suffixes=("", "_pred"))
@@ -88,16 +89,16 @@ def main():
                          "accuracy": round(float(accuracy_score(sub["y_true"], sub["y_pred"])), 4),
                          "claim_text_match_rate": round(float(same_claim), 4)})
     res = pd.DataFrame(rows)
-    res.to_csv(ROOT / "subset_analysis.csv", index=False)
+    res.to_csv(config.TABLES_DIR / "subset_analysis.csv", index=False)
     # cross-check the full-set macro-F1 against the paper's results.json
-    results = json.loads((MIRROR / "output/results/results.json").read_text())
+    results = json.loads(config.RESULTS_JSON.read_text())
     checks = []
     for model in res["model"].unique():
         paper = results.get(model, {}).get("eval", {}).get("finfact_test", {}).get("macro_f1")
         ours = float(res[(res.model == model) & (res.subset == "full")]["macro_f1"].iloc[0])
         checks.append({"model": model, "paper_results_json": paper, "recomputed_full": ours, "match": (paper is not None and abs(paper - ours) < 1e-3)})
     checks = pd.DataFrame(checks)
-    (ROOT / "subset_receipts.json").write_text(json.dumps(receipts, indent=1))
+    (config.RESULTS_DIR / "subset_receipts.json").write_text(json.dumps(receipts, indent=1))
     # Markdown
     piv = res.pivot(index="model", columns="subset", values="macro_f1")[["full", "fits_256", "exceeds_256"]]
     ns = res.pivot(index="model", columns="subset", values="n")[["full", "fits_256", "exceeds_256"]]
@@ -117,7 +118,7 @@ def main():
     comp = df.groupby("fits_256")["label"].value_counts(normalize=True).unstack().round(3)
     md.append(comp.to_markdown())
     md += ["", "Evidence-source composition by subset:", "", df.groupby("fits_256")["evidence_source"].value_counts().unstack().fillna(0).astype(int).to_markdown()]
-    (ROOT / "subset_analysis.md").write_text("\n".join(md))
+    (config.ROOT_DIR / "docs" / "subset_analysis.md").write_text("\n".join(md))
     print("\n".join(md))
 
 if __name__ == "__main__":
