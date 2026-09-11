@@ -2,12 +2,16 @@
 
     python3 verify_v2.py        # prints the table and writes verification-v2.json
 """
-import hashlib, json, datetime
+import hashlib, json, datetime, sys
+from pathlib import Path
 import numpy as np, pandas as pd
 from scipy import stats
 
-MIRROR = "mirror"
-PQ = f"{MIRROR}/data/processed/sec_synthetic_test.parquet"
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import config
+
+MIRROR = config.ROOT_DIR / "mirror"  # local copy of the frozen 4open mirror; URLs and hashes in output/results/mirror_HASHES.csv
+PQ = config.SEC_PARQUET
 
 def wilson(x, n, z=1.96):
     p = x / n; d = 1 + z*z/n; c = p + z*z/(2*n)
@@ -21,7 +25,7 @@ def main():
            "parquet_sha256": sha, "n_pairs": len(df), "models": {}}
 
     for m in ["distilbert_full", "distilbert", "xgboost", "lexical_baseline"]:
-        p = pd.read_csv(f"{MIRROR}/output/predictions/{m}__sec_synthetic.csv")
+        p = pd.read_csv(config.PREDICTIONS_DIR / f"{m}__sec_synthetic.csv")
         pred = [c for c in p.columns if c.lower() in ("y_pred","pred","prediction","predicted")][0]
         j = df.merge(p, left_on="id", right_on=("id" if "id" in p.columns else p.columns[0]), suffixes=("","_p"))
         j["_ok"] = (j[pred].astype(str).str.upper().str.strip() == j.label.astype(str).str.upper().str.strip())
@@ -35,7 +39,7 @@ def main():
         out["models"][m] = cells
 
     # the non-year number-change slice, by the same diff rule scan_perturbations.py uses
-    nc = pd.read_csv("year_edit_split.csv")
+    nc = pd.read_csv(config.TABLES_DIR / "year_edit_split.csv")
     row = nc[(nc.model == "DistilBERT (full FEVER)") & (nc.edit_kind == "non_year")].iloc[0]
     x_ny, n_ny = int(round(row.accuracy * row.n)), int(row.n)
     lo, hi = wilson(x_ny, n_ny)
@@ -56,8 +60,8 @@ def main():
         "number_change_non_year_vs_negation": round(fisher(ny, d["negation"]), 4)}
 
     # the label-mapping arithmetic the paper must not print
-    lm = pd.read_csv(f"{MIRROR}/output/tables/label_mapping_finfact.csv")
-    ds = pd.read_csv(f"{MIRROR}/output/tables/dataset_stats.csv")
+    lm = pd.read_csv(MIRROR / "output/tables/label_mapping_finfact.csv")
+    ds = pd.read_csv(config.TABLES_DIR / "dataset_stats.csv")
     ff = ds[ds.dataset == "Fin-Fact"].iloc[0]
     out["label_mapping_check"] = {
         # intentional: reads the frozen mirror's schema (count), which differs from the repository's corrected table (raw_count, dropped_empty, scored_count)
@@ -68,7 +72,7 @@ def main():
         "discrepancy_rows": int(lm["count"].sum() - ff.rows),
         "verdict": "print the scored counts (1271/1485/611); the mapping table is pre-drop"}
 
-    json.dump(out, open("verification-v2.json", "w"), indent=2)
+    json.dump(out, open(config.RESULTS_DIR / "verification-v2.json", "w"), indent=2)
 
     d = out["models"]["distilbert_full"]
     print(f"parquet sha256 {sha[:16]}…  n={len(df)}")
