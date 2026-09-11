@@ -95,6 +95,7 @@ def main() -> None:
     logger.info("raw Fin-Fact label distribution: %s", dict(raw_labels))
 
     rows, evidence_sources = [], Counter()
+    dropped_empty = Counter()  # per raw label: mapped rows skipped for empty claim/evidence
     for i, row in enumerate(records):
         raw_label = str(row.get("label")).strip().lower()
         mapped = LABEL_MAP.get(raw_label)
@@ -106,6 +107,7 @@ def main() -> None:
         evidence_sources[source] += 1
         if not claim or not evidence_text:
             evidence_sources["skipped_empty"] += 1
+            dropped_empty[raw_label] += 1
             continue
         rows.append({
             "id": f"finfact_{i:04d}",
@@ -121,10 +123,14 @@ def main() -> None:
     mapping_path = config.TABLES_DIR / "label_mapping_finfact.csv"
     with open(mapping_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["raw_label", "count", "mapped_to", "kept"])
-        for raw_label, count in sorted(raw_labels.items()):
+        writer.writerow(["raw_label", "raw_count", "dropped_empty", "scored_count",
+                         "mapped_to", "kept"])
+        for raw_label, raw_count in sorted(raw_labels.items()):
             mapped = LABEL_MAP.get(raw_label)
-            writer.writerow([raw_label, count, mapped or "dropped", mapped is not None])
+            dropped = dropped_empty[raw_label]
+            scored = raw_count - dropped if mapped is not None else 0
+            writer.writerow([raw_label, raw_count, dropped, scored,
+                             mapped or "dropped", mapped is not None])
     logger.info("wrote %s", mapping_path)
     logger.info("evidence sources used: %s", dict(evidence_sources))
 
