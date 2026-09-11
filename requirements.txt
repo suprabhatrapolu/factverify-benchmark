@@ -79,6 +79,7 @@ six==1.17.0
 smart_open==8.0.1
 soupsieve==2.9
 sympy==1.14.0
+tabulate==0.10.0
 tensorflow==2.21.0
 termcolor==3.3.0
 threadpoolctl==3.6.0
