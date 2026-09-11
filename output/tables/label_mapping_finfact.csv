@@ -1,4 +1,4 @@
-raw_label,count,mapped_to,kept
-false,1485,REFUTES,True
-neutral,611,NOT ENOUGH INFO,True
-true,1273,SUPPORTS,True
+raw_label,raw_count,dropped_empty,scored_count,mapped_to,kept
+false,1485,0,1485,REFUTES,True
+neutral,611,0,611,NOT ENOUGH INFO,True
+true,1273,2,1271,SUPPORTS,True

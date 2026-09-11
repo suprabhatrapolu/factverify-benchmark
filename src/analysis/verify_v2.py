@@ -60,6 +60,7 @@ def main():
     ds = pd.read_csv(f"{MIRROR}/output/tables/dataset_stats.csv")
     ff = ds[ds.dataset == "Fin-Fact"].iloc[0]
     out["label_mapping_check"] = {
+        # intentional: reads the frozen mirror's schema (count), which differs from the repository's corrected table (raw_count, dropped_empty, scored_count)
         "mapping_table_sum": int(lm["count"].sum()),
         "dataset_stats_rows": int(ff.rows),
         "dataset_stats_supports": int(ff.n_supports),
